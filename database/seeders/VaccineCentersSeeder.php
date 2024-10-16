@@ -13,20 +13,28 @@ class VaccineCentersSeeder extends Seeder
      */
     public function run() : void
     {
-        // Prepopulate with 10-20 vaccine centers
-        DB::table('vaccine_centers')->insert([
-            ['center_name' => 'Center A', 'location' => 'Location A', 'daily_limit' => 100],
-            ['center_name' => 'Center B', 'location' => 'Location B', 'daily_limit' => 150],
-            ['center_name' => 'Center C', 'location' => 'Location C', 'daily_limit' => 120],
-            ['center_name' => 'Center D', 'location' => 'Location D', 'daily_limit' => 80],
-            ['center_name' => 'Center E', 'location' => 'Location E', 'daily_limit' => 200],
-            ['center_name' => 'Center F', 'location' => 'Location F', 'daily_limit' => 130],
-            ['center_name' => 'Center G', 'location' => 'Location G', 'daily_limit' => 90],
-            ['center_name' => 'Center H', 'location' => 'Location H', 'daily_limit' => 170],
-            ['center_name' => 'Center I', 'location' => 'Location I', 'daily_limit' => 110],
-            ['center_name' => 'Center J', 'location' => 'Location J', 'daily_limit' => 95],
-            ['center_name' => 'Center K', 'location' => 'Location K', 'daily_limit' => 180],
-            ['center_name' => 'Center L', 'location' => 'Location L', 'daily_limit' => 105],
-        ]);
+        $existingCenters = DB::table('vaccine_centers')->count();
+
+        if ($existingCenters == 0) {
+            // Prepopulate with vaccine centers in Bangladesh if none exist
+            DB::table('vaccine_centers')->insert([
+                ['center_name' => 'Dhaka Medical College Hospital', 'location' => 'Dhaka', 'daily_limit' => 200],
+                ['center_name' => 'Bangabandhu Sheikh Mujib Medical University', 'location' => 'Dhaka', 'daily_limit' => 150],
+                ['center_name' => 'Chittagong Medical College', 'location' => 'Chittagong', 'daily_limit' => 180],
+                ['center_name' => 'Rajshahi Medical College', 'location' => 'Rajshahi', 'daily_limit' => 130],
+                ['center_name' => 'Khulna Medical College', 'location' => 'Khulna', 'daily_limit' => 140],
+                ['center_name' => 'Sylhet MAG Osmani Medical College', 'location' => 'Sylhet', 'daily_limit' => 120],
+                ['center_name' => 'Barisal Sher-e-Bangla Medical College', 'location' => 'Barisal', 'daily_limit' => 110],
+                ['center_name' => 'Dinajpur Medical College', 'location' => 'Dinajpur', 'daily_limit' => 100],
+                ['center_name' => 'Pabna Medical College', 'location' => 'Pabna', 'daily_limit' => 90],
+                ['center_name' => 'Cox\'s Bazar Medical College', 'location' => 'Cox\'s Bazar', 'daily_limit' => 80],
+
+                ['center_name' => 'Mymensingh Medical College', 'location' => 'Mymensingh', 'daily_limit' => 160],
+                ['center_name' => 'Narsingdi Medical College', 'location' => 'Narsingdi', 'daily_limit' => 150],
+            ]);
+        } else {
+            // Optionally log or inform that centers already exist
+            echo "Vaccine centers already exist in the database. Skipping insertion.\n";
+        }
     }
 }
