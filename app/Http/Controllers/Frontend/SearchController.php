@@ -10,21 +10,43 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    /**
-     * Display the vaccination status based on the user's NID.
-     *
-     * @param Request $request The incoming HTTP request containing user input.
-     * @return Factory|View The view displaying the vaccination status and user details.
-     */
+   
     public function index(Request $request)
-    {
-        $user = [];
-        // Fetch user and related vaccine center details
-        if (!empty($request->user_nid)) {
-            $user = User::with('vaccineCenter')->where('nid', $request->user_nid)->first();
+        {
+            $user = null; 
+        
+            $request->validate([
+                'user_nid' => 'nullable|string|max:255', 
+            ]);
+
+            try {
+             
+                if (!empty($request->user_nid)) {
+                    $user = User::with('vaccineCenter')
+                        ->where('nid', $request->user_nid)
+                        ->first();
+            
+                    // If no user is found, pass a specific flag to the view
+                    if (!$user) {
+                        return view('covid.search', ['user' => null, 'message' => 'You are not registered.']);
+                    }
+                }
+
+            } catch (\Exception $e) {
+                // Log the error for further debugging
+                \Log::error('Error fetching user by NID: ' . $e->getMessage(), [
+                    'user_nid' => $request->user_nid,
+                    'exception' => $e
+                ]);
+
+                // Redirect back with an error message
+                return redirect()->back()->with('error', 'An error occurred while fetching the user details. Please try again later.');
+            }
+
+          
+            return view('covid.search', compact('user'));
         }
 
-        return view('frontend.search', compact('user'));
-    }
+    
 }
 

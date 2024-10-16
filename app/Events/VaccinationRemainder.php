@@ -7,8 +7,8 @@ namespace App\Events;
 use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Queue\SerializesModels;
-
-class VaccinationRemainder
+use Illuminate\Contracts\Queue\ShouldQueue;
+class VaccinationRemainder implements ShouldQueue
 {
     use InteractsWithSockets, SerializesModels;
 

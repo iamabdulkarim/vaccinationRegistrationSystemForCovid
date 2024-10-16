@@ -5,9 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Vaccination Registration Confirmation</title>
     <style>
-        /* -------------------------------------
-            GLOBAL RESETS
-        ------------------------------------- */
+       
         img {
             border: none;
             -ms-interpolation-mode: bicubic;
@@ -31,13 +29,11 @@
             font-family: sans-serif;
             font-size: 14px;
             vertical-align: top; }
-        /* -------------------------------------
-            BODY & CONTAINER
-        ------------------------------------- */
+       
         .body {
             background-color: #edf2f7;
             width: 100%; }
-        /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+      
         .container {
             display: block;
             Margin: 0 auto !important;
@@ -45,7 +41,7 @@
             max-width: 580px;
             padding: 10px;
             width: 580px; }
-        /* This should also be a block element, so that it will fill 100% of the .container */
+    
         .content {
             box-sizing: border-box;
             display: block;
@@ -261,13 +257,13 @@
             <div class="content">
                 <h1>{{ $app_name }}</h1>
                 <div class="main">
-                    <h4 style="font-family: Helvetica">Hi {{ $mail_data['receiver_name'] ? ' '.$mail_data['receiver_name'] : '' }},</h4>
+                    
                     <p style="margin-bottom: 15px !important;">{!! html_entity_decode($mail_data['body']) !!}</p>
 
-                    <p>Best regards,<br>The {{ $app_name }} Team</p>
+                   
                 </div>
                 <div class="footer">
-                    © 2024 | Designed & Developed by <a href="https://github.com/iktakhairul" target="_blank">Shah Md. Iktakhairul Islam</a>
+                    © 2024 | Powered by <a href="https://github.com/iamabdulkarim" target="_blank">Abdul karim</a>
                 </div>
             </div>
         </td>
