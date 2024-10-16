@@ -31,7 +31,6 @@ git clone https://github.com/iamabdulkarim/vaccinationRegistrationSystemForCovid
 ```
 
 ```bash
-git clone https://github.com/iamabdulkarim/vaccinationRegistrationSystemForCovid.git
 
 cd vaccinationRegistrationSystemForCovid
 ```
