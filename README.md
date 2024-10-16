@@ -33,7 +33,7 @@ git clone https://github.com/iamabdulkarim/vaccinationRegistrationSystemForCovid
 ```bash
 git clone https://github.com/iamabdulkarim/vaccinationRegistrationSystemForCovid.git
 
-cd COVID-vaccination
+cd vaccinationRegistrationSystemForCovid
 ```
 
 ### Step 2: Install Dependencies
